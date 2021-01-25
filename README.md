@@ -73,9 +73,10 @@ onde deve ser ser informado a variável "?curso=" e o nome do curso a ser filtra
 ### POST /topico
 
 Cria um novo tópico, deve 
-ser enviado um objeto json através do body da requisição, conforme o exemplo abaixo
+ser enviado um objeto json através do body da requisição, conforme o exemplo abaixo:
 
 ```JSON
+//Requisição
 {
   "titulo":"Dúvidas Gerais!",
   "mensagem": "Dúvidas de java",
@@ -88,10 +89,53 @@ a data de criação e o id criado no banco conforme o exemplo abaixo:
 
 ```JSON
 {
+  //Resposta
   "id": 4,
   "titulo": "Dúvidas Gerais!",
   "mensagem": "Dúvidas de java",
   "dataCriacao": "2021-01-25T09:01:55.714683098"
 }
 ```
+
+
+### GET /topicos/{id}
+
+Retorna o topico conforme o id informado na uri.
+
+```JSON
+{
+    "id": 1,
+    "titulo": "Dúvida",
+    "mensagem": "Erro ao criar projeto",
+    "dataCriacao": "2019-05-05T18:00:00"
+}
+```
+
+### PUT /topicos/{id}
+
+Atualiza no topico informado no uri, os campos título e mensagem conforme o JSON informados na requisição.
+
+```JSON
+{
+  //Requisição
+    "titulo": "Dúvida",
+    "mensagem": "Erro ao criar projeto",
+}
+```
+
+```JSON
+{
+  //Resposta
+  "id": 1,
+  "titulo": "Atualizado",
+  "mensagem": "mensagem nova",
+  "dataCriacao": "2019-05-05T18:00:00"
+}
+```
+
+### DELETE /topicos/{id}
+
+Apaga o topico do id informado na uri.
+Caso o topico tenha sido apagado com sucesso, será retornado o status 200(OK).
+
 

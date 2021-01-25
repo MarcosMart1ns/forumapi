@@ -2,6 +2,7 @@ package br.com.api.forum.config.validacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -21,11 +22,14 @@ public class ErroDeValidaçãoHandler {
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public List<ErroFormularioDTO> handle(MethodArgumentNotValidException exception){
+
         List<ErroFormularioDTO> dto = new ArrayList<>();
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
+
         fieldErrors.forEach(e->{
-            String mensagem="Erro no preenchimento do formulário";
+            String mensagem=messageSource.getMessage(e, LocaleContextHolder.getLocale());
             ErroFormularioDTO erro = new ErroFormularioDTO(e.getField(),mensagem);
+            dto.add(erro);
         });
 
         return dto;
