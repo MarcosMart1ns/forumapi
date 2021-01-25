@@ -1,16 +1,16 @@
-#Forum Api
+# Forum Api
 
 Uma simples API Rest de representação de um fórum, utilizada para aplicar alguns conhecimentos.
 Utiliza conexão com um banco de dados local, H2 Database e construído com Spring.
 
-###Tecnologias
+### Tecnologias
 - Java 11
 - Spring Framework
 - H2 Database
 
-##Colocando pra funcionar
+## Colocando pra funcionar
 
-###Requisitos
+### Requisitos
 
 - JDK 11 ou acima;
 - Maven (Opcional)
@@ -38,10 +38,10 @@ As rotas abaixo são descritas no formato método/recurso, logo abaixo é descri
 requisição se necessário e o formato da resposta.
 
 
-###GET /
+### GET /
 Retorna uma mensagem constatando que a aplicação está rodando.
 
-###GET /topicos
+### GET /topicos
 
 Retorna todos os tópicos cadastrados.
 
